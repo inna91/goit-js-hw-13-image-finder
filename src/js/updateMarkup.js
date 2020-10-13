@@ -1,8 +1,8 @@
 import galleryItemTpl from '../templates/photos.hbs';
 import refs from './refs';
 
-function updatePhotosMarkup(hits) {
-  const markup = galleryItemTpl(hits);
+function updatePhotosMarkup(photos) {
+  const markup = galleryItemTpl(photos.hits);
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 

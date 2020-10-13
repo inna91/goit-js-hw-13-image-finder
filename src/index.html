@@ -6,25 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Image-finder</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
 </head>
 
 <body>
   <form class="js-search-form search-form" id="search-form">
-    <div class="input-wrap">
-      <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
+    <div class="input-wrap mx-sm-3 mb-2">
+      <input type="text" class="input" name="query" autocomplete="off" placeholder="Search images..." />
     </div>
-    <button type="submit" class="btn">Искать</button>
+    <button type="submit" class="btn btn-primary mb-2">Искать</button>
   </form>
 
   <ul class="gallery js-gallery"></ul>
 
 
-  <button type="button" class="btn btn-primary button" data-action="load-more">
-    <span class="spinner-border spinner-border-sm spinner is-hidden" role="status" aria-hidden="true"></span>
+  <button type="button" class="btn btn-primary button is-hidden" data-action="load-more"><span
+      class="spinner-border spinner-border-sm spinner is-hidden" role="status" aria-hidden="true"></span>
 
-    <span class="label">Показать ещё</span>
+    <span class="label">Load more</span>
   </button>
+
+
 </body>
 
 </html>
