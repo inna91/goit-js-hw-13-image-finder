@@ -1,7 +1,8 @@
 import updatePhotosMarkup from './js/updateMarkup';
+import { error } from '@pnotify/core';
 import refs from './js/refs';
 import apiService from './js/apiService';
-import viewPnotify from './js/pnotify';
+import AllPhotos from './js/pnotify';
 import 'material-design-icons/iconfont/material-icons.css';
 import loadMoreBtn from './js/loadMoreBtn';
 import './styles.css';
@@ -17,6 +18,7 @@ function searchFormSubmitHandler(event) {
   apiService.resetPage();
 
   fetchPhotos();
+  AllPhotos();
 }
 
 function fetchPhotos() {
@@ -29,7 +31,6 @@ function fetchPhotos() {
       loadMoreBtn.show();
       loadMoreBtn.enable();
       totalNumber(photos);
-      viewPnotify(apiService.page);
       apiService.incrementPage();
 
       window.scrollTo({

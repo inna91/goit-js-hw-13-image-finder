@@ -4,10 +4,9 @@ import '@pnotify/core/dist/BrightTheme.css';
 import apiService from './apiService';
 import { error } from '@pnotify/core';
 
-export default function viewPNotify(num) {
+export default function AllPhotos() {
   info({
-    text: `All found: ${apiService.totalImages},
-    ${num} page loaded`,
-    delay: 700,
+    text: `All found: ${apiService.totalImages}`,
+    delay: 500,
   });
 }

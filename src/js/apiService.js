@@ -19,7 +19,7 @@ export default {
       const { hits, total } = await response.json();
       return { hits, total };
     } catch (err) {
-      throw error({
+      error({
         title: 'Wrong query! Please try again',
       });
     }

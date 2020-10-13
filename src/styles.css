@@ -64,11 +64,6 @@ li {
   margin-bottom: 30px;
 }
 
-.gallery li {
-  height: 450px;
-  overflow: hidden;
-}
-
 .gallery img {
   display: block;
   width: 100%;
