@@ -1,4 +1,4 @@
-import error from './pnotify';
+import { error } from '@pnotify/core';
 
 const apiKey = '18661870-79eb159249f519a0733d37bbc';
 export default {
@@ -19,9 +19,7 @@ export default {
       const { hits, total } = await response.json();
       return { hits, total };
     } catch (err) {
-      error({
-        title: 'Wrong query! Please try again',
-      });
+      error();
     }
   },
 
