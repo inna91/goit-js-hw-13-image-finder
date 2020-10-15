@@ -2,13 +2,16 @@ import updatePhotosMarkup from './js/updateMarkup';
 import { error } from '@pnotify/core';
 import refs from './js/refs';
 import apiService from './js/apiService';
+import './scss/basicLightBox.scss';
 import allPhotos from './js/pnotify';
 import 'material-design-icons/iconfont/material-icons.css';
 import loadMoreBtn from './js/loadMoreBtn';
+import * as basicLightbox from 'basiclightbox';
 import './styles.css';
 
 refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 refs.loadMoreBtn.addEventListener('click', fetchPhotos);
+refs.gallery.addEventListener('click', openLargeImgHandler);
 
 function searchFormSubmitHandler(event) {
   event.preventDefault();
@@ -46,4 +49,16 @@ function totalNumber(photos) {
 
 function clearGalleryContainer() {
   refs.gallery.innerHTML = '';
+}
+
+function openLargeImgHandler(event) {
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  const largeImageURL = event.target.dataset.source;
+  modalWindow(largeImageURL);
+}
+
+function modalWindow(url) {
+  basicLightbox.create(`<img width="1600" height="900" src="${url}">`).show();
 }
