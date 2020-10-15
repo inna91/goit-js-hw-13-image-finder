@@ -1,9 +1,8 @@
 import updatePhotosMarkup from './js/updateMarkup';
-import { notice } from '@pnotify/core';
 import { error } from '@pnotify/core';
 import refs from './js/refs';
 import apiService from './js/apiService';
-import AllPhotos from './js/pnotify';
+import allPhotos from './js/pnotify';
 import 'material-design-icons/iconfont/material-icons.css';
 import loadMoreBtn from './js/loadMoreBtn';
 import './styles.css';
@@ -13,22 +12,20 @@ refs.loadMoreBtn.addEventListener('click', fetchPhotos);
 
 function searchFormSubmitHandler(event) {
   event.preventDefault();
+  apiService.resetPage();
   apiService.query = event.target.query.value;
   clearGalleryContainer();
 
-  apiService.resetPage();
+  allPhotos();
 
   fetchPhotos();
-  AllPhotos();
 }
 
 function fetchPhotos() {
   loadMoreBtn.disable();
-
   apiService
     .fetchPhotos()
     .then(photos => {
-      if (!photos) return notice('Wrong query! Please try again');
       updatePhotosMarkup(photos);
       loadMoreBtn.show();
       loadMoreBtn.enable();
@@ -40,7 +37,7 @@ function fetchPhotos() {
         behavior: 'smooth',
       });
     })
-    .catch(error => console.log(error));
+    .catch(err => console.log(error));
 }
 
 function totalNumber(photos) {
