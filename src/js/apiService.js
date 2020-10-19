@@ -1,4 +1,5 @@
 import { notice } from '@pnotify/core';
+import loadMoreBtn from './loadMoreBtn';
 
 const apiKey = '18661870-79eb159249f519a0733d37bbc';
 export default {
@@ -17,7 +18,11 @@ export default {
         this.options,
       );
       const { hits, total } = await response.json();
-      if (!hits.length) return;
+      if (!hits.length) {
+        loadMoreBtn.disable();
+        loadMoreBtn.hide();
+        return;
+      }
       if (!total) return notice('Wrong query! Please try again');
       return { hits, total };
     } catch (error) {
